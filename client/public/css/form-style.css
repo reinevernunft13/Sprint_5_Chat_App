@@ -1,0 +1,184 @@
+/*--  ============= Google Font Import - Poformsins ============= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,700;1,300;1,400;1,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: purple
+}
+
+.container{
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: cornsilk;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px #0000001a;
+    overflow: hidden;
+}
+
+.container .form {
+    padding: 30px;
+}
+
+.container .form .title{
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.container .forms {
+    display: flex;
+    align-items: center;
+    height: 440px;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+.container .active .login{
+    margin-left: -50%; ;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+ } 
+ /*Fondo cuadrado registro*/
+ .container .signup{
+     transition: opacity 0.09s ease;
+  }
+  .container .active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+ }
+
+.container .active .forms{
+    height: 600px;
+}
+
+.container .form .title{
+    position: 600;
+    font-size: 27px;
+   font-weight: 600;  
+   color:#8b008b;
+}
+
+.form .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 6px; /*Anchura de la raya*/
+    width: 67px; /*Largada de la raya*/
+    background-color: #8b008b; /*Raya borde inf izq*/
+    border-radius: 25px;
+}
+
+.form .input-field{
+    background-color: #8b008b; /* Borde superior cuadrados mail y candado al lado */
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/*Cuadro de texto. Mail y candado relieve y transparente en la parte izq DENTRO del cuadro de texto*/
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 17px; /*Tamaño letra cuadro de texto
+    /*Borde inferior cuadro de texto*/
+    border-bottom: 3px solid #8b008b; 
+    border-top: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+/*.input-field error-message{
+    color: #cc0033;
+    display: inline;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 0 0;
+}*/
+
+ 
+.input-field small{
+    position: absolute;
+    line-height: 15px;
+    margin: 3px;
+    visibility: hidden;
+
+}
+
+/*Icono contraseña no/visible en el cuadro contraseña al lado derecho*/
+.input-field input:is(:focus, :valid) {
+    border-bottom-color: #8b008b;
+    top: 10%;
+    cursor: pointer;
+}
+
+/* Icono: Mail y candado relieve y transparente. Parte inf izq del cuadro de texto*/
+.input-field i{
+    position: absolute;
+    top: 10%; /* Posición iconos dentro del cuadro de texto*/
+    transform: translateY(-30%);
+    color: #8b008b; /*Color iconos*/
+    font-size: 25px; 
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i {
+    color: #8b008b;
+}
+
+.input-field i.icon{
+    left: 0;
+}
+
+.input-field i.showHidePw{
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/*.form .register-box{
+    display: flex;
+    margin-top: 20px;
+}*/
+
+/*Tamaño de todo el cuadro "Login"*/
+.form .button{
+    margin-top: 35px;
+}
+
+.form .button input{
+    border: none;
+    color: #fc971d;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    border-radius: 6px;
+    background-color: #8b008b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/*Selecciona el elemento cuando pasa el ratón por encima*/
+.button input:hover{
+    background-color:#8b008b;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+

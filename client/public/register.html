@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<body lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript, NodeJS">
+    <meta name="description" content="This is my first Chat App">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Iconscout CSS-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/form-style.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="container">
+            <div class="form register">
+                <span class="title">Create an account</span>
+                <form class="form">
+                    <div class="input-field">
+                        <label for="username"></label>
+                        <input id="username" type="text" placeholder="Choose a username" autocomplete="off" name="username">
+                        <i class="uil uil-user"></i>
+                        <small>Error Message</small>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="password"></label>
+                        <input id="password" type="password" placeholder="Enter your password" autocomplete="off" name="password">
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i> 
+                        <small>Error Message</small>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="confirmPassword"></label>
+                        <input id="confirmPassword" type="password" placeholder="Confirm your password" autocomplete="off" name="confirmPassword">
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                        <small>Error Message</small>
+                    </div> 
+                
+                    <div class="input-field button">
+                        <input type="submit" value="Sign Up">
+                    </div>
+                <!--<span style="color: red;" id="error_box"></span> -->  
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Already have an account?
+                    <a href="./login.html" class="text signup-text">Sign In</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    <script src="./js/register.js"></script>
+</body>
+</html>
