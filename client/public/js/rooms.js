@@ -9,7 +9,6 @@ const joinRoom = (room) => {
     sessionStorage.roomName = room.roomName;
     sessionStorage.roomId = room.roomId;
     
-
     // Change room name
     document.getElementById("roomName").innerHTML = `${room.roomName}`;
 
@@ -25,7 +24,7 @@ const joinRoom = (room) => {
 const displayRoom = (room) => {
 
     const btn = document.createElement('button');
-        if (room.roomName === 'Welcome') {
+        if(room.roomName === 'general') {
         btn.classList.add('room-btn-active');
         joinRoom(room);
     }
@@ -36,7 +35,7 @@ const displayRoom = (room) => {
     btn.onclick = () => {
 
         if (sessionStorage.roomId) {
-            document.getElementById(sessionStorage.roomId).classList.remove('room-btn-active')
+            document.getElementById(sessionStorage.roomId).classList.remove('room-btn-active');
         }
 
         btn.classList.add('room-btn-active');
@@ -54,7 +53,6 @@ const displayRoom = (room) => {
 const displayRoomUsers = (room, users) => {
     document.getElementById(room.roomId).textContent = `${room.roomName} (${users.length})`
 }
-
 
 const createRoom = () => {
     const newRoomName = document.getElementById("roomForm").newRoom.value;

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { Users } = require('../db/models/models');
+const { Users } = require('../models/Users.js');
 
 const register = async (req, res) => {
 
@@ -19,7 +19,7 @@ const register = async (req, res) => {
     if(password !== confirmPassword) {
         return res.status(400).json({
             status: "error",
-            error: "Password and confirmation password don't match"
+            error: "Password and confirmation password not matching"
         })
     }
 

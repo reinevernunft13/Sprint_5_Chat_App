@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const emoji = require('node-emoji');
 
 const { getRooms, createRoom } = require('../controllers/rooms.js');
 const { getUsers, disconnectUser, joinRoom } = require('../controllers/users.js');
@@ -39,7 +40,7 @@ const socketEvents = async (io) => {
             userName: socket.decoded.userName
         };
         
-        console.log(`user ${user.userName} connected to socket.io server`);
+        console.log(emoji.get("large_green_circle") + `user ${user.userName} connected to socket.io server`);
         
         socket.on('new-message', async (message) => {
            //saves message to db before emitting back to front
@@ -137,7 +138,9 @@ const socketEvents = async (io) => {
             let disconnectedUser = await disconnectUser(user);
            
             if (disconnectedUser.status === 'success') {
-                
+                //console.log(emoji.get("red_circle") + `user ${user.userName} disconnected from socket.io server`);
+                console.log(emoji.get("red_circle") + `user ${disconnectedUser.user.userName} disconnected from socket.io server`);
+
                 // USER leaves former room
                 socket.leave(disconnectedUser.room.roomId);
                 

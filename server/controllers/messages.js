@@ -1,4 +1,4 @@
-const { Rooms } = require('../db/models/models');
+const { Rooms } = require('../models/Rooms.js');
 
 //retrieve messages from current room
 const getMessages = async(room) => {
@@ -22,10 +22,10 @@ const getMessages = async(room) => {
             messages = roomInfo.messages.map(({ user, room, text}) => ({ user, room, text }));
         }
 
-        result = {status: 'success', messages};
+        result = { status: 'success', messages };
 
     } catch (err) {
-        result =  {status:'error', message: err.message};
+        result =  { status:'error', message: err.message };
     }
 
     return result;

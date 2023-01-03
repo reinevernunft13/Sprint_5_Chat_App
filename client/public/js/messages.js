@@ -1,12 +1,12 @@
 const sendMessage = () => {
     //retrieves message from chat-form input, room and user from sessionStorage
     const text = document.querySelector('.chat-form input[name="newMessage"]').value;
-    const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
-    const room = {roomId: sessionStorage.roomId, roomName: sessionStorage.roomName};
+    const user = { userId: sessionStorage.userId, userName: sessionStorage.userName };
+    const room = { roomId: sessionStorage.roomId, roomName: sessionStorage.roomName };
     
     //sends obj with message, room and user info to socket.io server
     if (text) {
-        let message = {user, room, text};
+        let message = { user, room, text };
         socket.emit('new-message', message);
         displayMessage(message);
         document.querySelector('.chat-form input[name="newMessage"]').value = '';

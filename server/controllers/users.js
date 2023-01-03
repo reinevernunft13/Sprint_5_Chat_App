@@ -1,6 +1,6 @@
-const { Users } = require('../db/models/models.js');
+const { Users } = require('../models/Users.js');
 
-const getUsers = async (room) => {
+const getUsers = async(room) => {
     
     let result;
     
@@ -27,7 +27,8 @@ const disconnectUser = async(user) => {
 
         const userDisconnected = await Users.findOneAndUpdate(
             { _id: user.userId }, 
-            { 'room.roomId': null, 'room.roomName': null}
+            { 'room.roomId': null, 
+            'room.roomName': null }
             );
 
         if (userDisconnected) {
@@ -38,7 +39,7 @@ const disconnectUser = async(user) => {
             result = {status: 'fail', message: 'socketid for user disconnect not found'}
         }
     } catch (err) {
-        result =  {status:'error', message: err.message};
+        result =  { status:'error', message: err.message };
     }
 
     return result;

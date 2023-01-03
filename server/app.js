@@ -26,7 +26,7 @@ app.use('/register', require('./routes/register.js'));
 app.use('/login', require('./routes/login.js'));
 
 // invalid route handling
-app.use((req, res) => res.status(404).json({ status: "error", error: "PAGE NOT FOUND"}));
+app.use((req, res) => res.status(404).json({ status: "error", error: "ERROR 404 - PAGE NOT FOUND"}));
 
 // starts http server
 const httpServer = app.listen(process.env.API_PORT, () => {

@@ -38,5 +38,5 @@ const roomsSchema = new mongoose.Schema({
 const Users = mongoose.model('Users', usersSchema);
 const Rooms = mongoose.model('Rooms', roomsSchema);
 
-module.exports = { Users, Rooms };
+//module.exports = { Users, Rooms };
 
