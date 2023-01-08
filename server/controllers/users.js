@@ -23,20 +23,15 @@ const disconnectUser = async(user) => {
 
     try {
         
-        // console.log('disconnectUser', user);
-
         const userDisconnected = await Users.findOneAndUpdate(
             { _id: user.userId }, 
-            { 'room.roomId': null, 
-            'room.roomName': null }
+            { 'room.roomId': null, 'room.roomName': null }
             );
 
         if (userDisconnected) {
-            result = {status: 'success', 
-                      user,
-                      room: userDisconnected.room}
+            result = { status: 'success', user, room: userDisconnected.room}
         } else {
-            result = {status: 'fail', message: 'socketid for user disconnect not found'}
+            result = {status: 'error', message: 'socketid for user disconnect not found'}
         }
     } catch (err) {
         result =  { status:'error', message: err.message };
@@ -46,35 +41,39 @@ const disconnectUser = async(user) => {
 }
 
 
-async function joinRoom (user, room) {
+const joinRoom = async(user, room) => {
 
     let result;
     try {
-       
+
         // Push user into the current room
         const currentUser = await Users.findOneAndUpdate(
             { _id: user.userId }, 
             { 'room.roomId': room.roomId, 'room.roomName': room.roomName }
             );
 
-       
-
-        if (currentUser) {
-            result = {status: 'success',
-                      user: { userId: currentUser._id, userName: currentUser.userName },
-                      oldRoom: currentUser.room
-                     };
+        if(currentUser) {
+            result = {
+                status: 'success',
+                user: { 
+                    userId: currentUser._id, 
+                    userName: currentUser.userName 
+                },
+                oldRoom: currentUser.room
+            };
         } else {
-            result = {status: 'fail', message: 'Error joining room'}
+            result = { status: 'fail', message: 'Error joining room'}
         }
     } catch (err) {
-        result =  {status:'error', message: err.message};
+        result =  { status:'error', message: err.message};
     }
 
         return result;
 }
 
+
 module.exports = { 
     getUsers, 
     disconnectUser, 
-    joinRoom }
+    joinRoom 
+}

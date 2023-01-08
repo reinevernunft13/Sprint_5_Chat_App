@@ -39,10 +39,20 @@ h2 {
     font-size: 1.5em;
 }
 
-ul,li {
+ul {
     list-style: none;
+    font-size: small;
     padding: 0;
     margin: 0;
+    text-align: right;
+}
+
+li {
+    list-style: none;
+    font-size: small;
+    padding: 0;
+    margin: 0;
+    text-align: left;
 }
 
 /* ERROR */
@@ -55,9 +65,7 @@ ul,li {
     color: var(--blue);
 }
 
-
 /* SCROLLBAR */
-
 
 * {
    
@@ -115,9 +123,7 @@ ul,li {
     
 }
 
-
 /* CHAT */
-
 .chat-container {
     height: 84vh;
     display:flex;
@@ -162,6 +168,11 @@ ul,li {
     font-size: 0.75rem;
     line-height: 1.5rem;
 }
+/* ADDITION maybe delete !!!!!! */
+/*.chat-li-info{
+    font-style: italic;
+    color: red;
+}*/
 
 .chat-form {
     display: flex;
@@ -173,16 +184,23 @@ ul,li {
     
 }
 /* HEADER*/
+.header {
+    height: 12vh;
+    display:flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-top:1rem;
+    
+}
+
 .header-roomname{
+
     color:var(--blue);
+
 }
 
 .header-username{
     color:var(--blue);
-}
-
-.add-space{
-    width:70%;
 }
 
 /* INPUT */
@@ -254,7 +272,7 @@ label{
 }
 
 /* HEADER  */
-
+/*
 .header {
     height: 12vh;
     display:flex;
@@ -262,7 +280,7 @@ label{
     padding: 0 1rem;
     margin-top:1rem;
     
-}
+}*/
 
 /* ROOM */
 

@@ -1,5 +1,11 @@
 socket.on('connect', () => {
-      
+
+    socket.on('new-user', data => {
+        document.getElementById("userName").innerHTML = `Hi, ${data.userName}`;
+        sessionStorage.setItem("userId", `${data.userId}`);
+        sessionStorage.setItem("userName", `${data.userName}`); 
+       
+    })
     //display new message in chat
    socket.on('new-message', message => {
        displayMessage(message);
@@ -16,15 +22,13 @@ socket.on('connect', () => {
    })
 
    socket.on('update-room-users', (room, users) => {
-       
        // Display updated list
-       if (sessionStorage.roomId === room.roomId) {
+       if(sessionStorage.roomId === room.roomId) {
            displayUsers(users)
        }
        displayRoomUsers(room, users);
-   })
-
+   });
 
    // Retrieve room list 
    socket.emit('get-rooms');
-})
+});

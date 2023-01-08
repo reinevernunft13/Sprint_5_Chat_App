@@ -13,4 +13,4 @@ const displayUsers = (users) => {
         userList.append(li);
     });
 }
-   
+

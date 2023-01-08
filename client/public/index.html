@@ -10,15 +10,24 @@
     </head> 
     <body>
         <header class="header">
-            <h2>My channel:</h2>
+            <div>
+                <!--h1 id="roomName" class="header-roomname"></!--h1-->
+                <h1 id="userName" class="header-username"></h1>
+            </div>
+            <div>
+                <h1 id="roomName" class="header-roomname"></h1>
+            </div>
+            <!--h1 class="welcome">Welcome to MyChat</!--h1-->
+            <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>
+            <!--<h2>My channel:</h2>
             <h2 id="roomName" class="header-roomname"></h2>
             <h1 id="userName" class="header-username"></h1>
             <div class="add-space"></div>
-            <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>
+            <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>-->
        </header>
        <div class="chat-container">
             <div id="room" class="room">
-                <button class="room-header" type="button">Channels</button>
+                <button class="room-header" type="button">#Channels</button>
                 <form id="roomForm" class="room-form" onsubmit="createRoom()">
                     <h1 id="userName" class="header-username"></h1>
                     <input class="input" type="text" id="newRoom" name="newRoom" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>

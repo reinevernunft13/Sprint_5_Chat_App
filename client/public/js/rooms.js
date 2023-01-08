@@ -1,16 +1,25 @@
 const joinRoom = (room) => {
 
-    // Check if selected room is other than current
-    if (sessionStorage.roomId === room.roomId) 
-    return
-     // emit to server 'join-room' event
-    socket.emit('join-room', room);
+    if(sessionStorage.roomId === room.roomId) {
+        return;
+    }
+    /*sessionStorage.roomName = room.roomName;
+    sessionStorage.roomId = room.roomId;*/
+    // emit to server 'join-room' event
+    let userName = sessionStorage.userName;
+    let userId = sessionStorage.userId;
+    const user = {
+        userId: userId,
+        userName: userName
+    }
+    
+    socket.emit('join-room', room, user);
     // Update variables
     sessionStorage.roomName = room.roomName;
     sessionStorage.roomId = room.roomId;
     
-    // Change room name
-    document.getElementById("roomName").innerHTML = `${room.roomName}`;
+    // sets room name
+    document.getElementById("roomName").innerHTML = `#${room.roomName}`;
 
    //clear messages from former room
     document.getElementById("messageList").innerHTML = "";
@@ -24,17 +33,19 @@ const joinRoom = (room) => {
 const displayRoom = (room) => {
 
     const btn = document.createElement('button');
-        if(room.roomName === 'general') {
-        btn.classList.add('room-btn-active');
-        joinRoom(room);
+    if(room.roomName === 'general') {
+        
+            btn.classList.add('room-btn-active');
+            joinRoom(room);
     }
 
     btn.textContent = room.roomName;
     btn.setAttribute('id', room.roomId);
     btn.classList.add('room-btn');
+    
     btn.onclick = () => {
 
-        if (sessionStorage.roomId) {
+        if(sessionStorage.roomId) {
             document.getElementById(sessionStorage.roomId).classList.remove('room-btn-active');
         }
 
@@ -51,17 +62,20 @@ const displayRoom = (room) => {
 
 //displays number of active users
 const displayRoomUsers = (room, users) => {
-    document.getElementById(room.roomId).textContent = `${room.roomName} (${users.length})`
+    let test = document.getElementById(room.roomId).textContent = `${room.roomName}[${users.length}]`;
+    console.log(test);
+    //document.getElementById(room.roomId).textContent = `${room.roomName}[${users.length}]`;
 }
 
 const createRoom = () => {
     const newRoomName = document.getElementById("roomForm").newRoom.value;
 //if there's input in room form
-    if (newRoomName) {
-      socket.emit('new-room', newRoomName)
-      document.getElementById("roomForm").newRoom.value = '';
-      joinRoom(newRoomName);
+    if(newRoomName) {
+        socket.emit('new-room', newRoomName);
+        document.getElementById("roomForm").newRoom.value = '';
+        joinRoom(newRoomName)
+      
      } else {
-    return false;
+        return false;
     }
-}
+};
